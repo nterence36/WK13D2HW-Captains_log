@@ -1,5 +1,5 @@
 const React = require("react");
-const DefaultLayout = require('../layouts/default');
+const DefaultLayout = require('../layout/default');
 
 class Show extends React.Component {
   render() {
@@ -16,7 +16,7 @@ class Show extends React.Component {
           ? "Ship is Broken"
           : "Ship is not broken"}
       <br/>
-      <a href='/logs'>Home</a>
+      <a href='/logs'><h1>Back</h1></a>
       </DefaultLayout>
     );
   }

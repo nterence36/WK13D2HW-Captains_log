@@ -26,7 +26,17 @@ app.engine("jsx", jsxEngine());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Index route
+app.get("/logs/", async (req, res) => {
+  try {
+    const logs = await Log.find();
+    res.render("Index", {logs: logs});
+  } catch(error) {
+    console.error(error);
+  }
+ });
 
+// New route
 app.get("/logs/new", (req, res) => {
   res.render("New");
 });
