@@ -5,8 +5,7 @@ const app = express();
 const port = 3000;
 const jsxEngine = require("jsx-view-engine");
 
-
-
+const methodOverride = require('method-override')
 
 const mongoose = require('mongoose')
 // connect to Mongoose
@@ -25,6 +24,7 @@ app.engine("jsx", jsxEngine());
 // app.use(express.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride('_method'))
 
 // Index route
 app.get("/logs/", async (req, res) => {
@@ -40,6 +40,16 @@ app.get("/logs/", async (req, res) => {
 app.get("/logs/new", (req, res) => {
   res.render("New");
 });
+
+// Delete route
+app.delete('/logs/:id', async (req, res) => {
+  try {
+    await Log.findByIdAndRemove(req.params.id)
+  res.redirect('/logs')
+  } catch(error){
+    console.log(error)
+  }
+})
 
 // Create route
 app.post("/logs", async (req, res) => {
