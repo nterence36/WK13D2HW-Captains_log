@@ -56,6 +56,11 @@ app.post("/logs", async (req, res) => {
 }
 })
 
+// Show route
+app.get('/logs/:id', async (req, res) => {
+  const log = await Log.findById(req.params.id)
+   res.render('Show', {log: log})
+})
 
 app.listen(port, () => {
   console.log("Listening to port 3000");
