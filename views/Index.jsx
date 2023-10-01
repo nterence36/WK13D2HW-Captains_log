@@ -1,12 +1,11 @@
 const React = require("react");
- //const DefaultLayout = require('../layout/default');
 
 class Index extends React.Component {
   render() {
     // what is define in {} should match with what is specified in the index route.
     const { logs } = this.props;
     return (
-     // <DefaultLayout title={"Index Page"}>
+     
      <div>
       <nav>
         <a href="/logs/new">Create a New Log</a>
@@ -27,7 +26,7 @@ class Index extends React.Component {
               })}
         </ul>
         </div>
-     // </DefaultLayout>
+     
     );
   }
 }
